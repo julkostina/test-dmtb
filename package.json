@@ -1,19 +1,9 @@
 {
-  "name": "parcel-react-client-starter",
+  "name": "test-tmdb",
   "private": true,
-  "version": "0.0.0",
-  "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
-  },
-  "dependencies": {
-    "react": "^19.2.4",
-    "react-dom": "^19.1.0"
-  },
-  "devDependencies": {
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "parcel": "^2.14.0"
+    "ui": "pnpm --filter ui start",
+    "bff": "pnpm --filter bff start",
+    "dev": "pnpm run --parallel ui bff"
   }
 }

@@ -1,1 +1,22 @@
-{"name":"bff","version":"1.0.0","dependencies":{"@apollo/server":"^5.5.0","apollo-server":"^3.13.0","axios":"^1.14.0","graphql":"^16.13.2"},"devDependencies":{"@types/node":"^25.5.0","nodemon":"^3.1.14","ts-node":"^10.9.2","typescript":"^6.0.2"}}
+{
+  "name": "bff",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+ "start": "tsx src/index.ts",
+    "dev": "nodemon --exec 'tsx src/index.ts' --ext ts"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.5.0",
+    "apollo-server": "^3.13.0",
+    "axios": "^1.14.0",
+    "dotenv": "^17.3.1",
+    "graphql": "^16.13.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}

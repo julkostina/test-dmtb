@@ -1,6 +1,6 @@
 import {Routes, Route} from 'react-router-dom';
 import SearchPage from './pages/SearchPage';
-import WatchListPage from './pages/WatchlistPage';
+import WatchListPage from './pages/WatchlistPage.tsx';
 
 export default function App() {
   return (
