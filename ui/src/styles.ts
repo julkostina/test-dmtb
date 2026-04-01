@@ -86,7 +86,6 @@ export const FlexContainer = styled("div")(({ theme }) => ({
 
 export const FlexColumnContainer = styled(FlexContainer)(() => ({
   flexDirection: "column",
-  // alignItems: "flex-start",
 }));
 export const PageBackground = styled("div")<{ backdrop?: string }>(({ theme, backdrop }) => ({
   backgroundImage: backdrop 
