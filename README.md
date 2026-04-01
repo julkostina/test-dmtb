@@ -33,7 +33,7 @@ PORT=4000
 - **`PORT`** — Optional. BFF listen port; defaults to **4000** if unset or invalid.
 - **`TMDB_API_KEY`** or **`TMDB_ACCESS_TOKEN`** — At least one must be correct or TMDB will respond with **401**.
 
-If you change **`PORT`**, point the UI at the same origin: update `uri` in `ui/src/apollo.ts` (for example `http://localhost:YOUR_PORT/graphql`).
+If you change **`PORT`** locally, set **`GRAPHQL_HTTP_URL`** for the UI (see [Deploy](#deploy-ui-vercel--bff-railway)) or use `http://localhost:YOUR_PORT/graphql` in `.env` / shell when building or running the UI.
 
 ## Install
 
@@ -62,7 +62,7 @@ pnpm --filter ui start    # Parcel dev server at http://localhost:3000
 
 Same thing via root shortcuts: `pnpm bff` and `pnpm ui` (they call the filters above).
 
-Open **http://localhost:3000** in a browser. The UI is configured to call the BFF at `http://localhost:4000/graphql` (see `ui/src/apollo.ts`).
+Open **http://localhost:3000** in a browser. The UI calls the GraphQL endpoint from **`GRAPHQL_HTTP_URL`**, or defaults to `http://localhost:4000/graphql` (see `ui/src/apollo.ts`). For local dev you can add `GRAPHQL_HTTP_URL=http://localhost:4000/graphql` to `ui/.env` if you use a non-default port.
 
 If Parcel fails with **port 3000 could not be used**, something else is already bound to that port—stop that process or change the port in `ui/package.json` (`parcel --port …`).
 
