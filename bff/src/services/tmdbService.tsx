@@ -1,19 +1,21 @@
+import "../env";
 import axios from "axios";
-import * as dotenv from "dotenv";
 import { Media } from "../types/tmdbServiceTypes";
-
-dotenv.config({ path: "../.env" });
 
 const BASE_URL =
   process.env.TMDB_BASE_URL ?? "https://api.themoviedb.org/3";
+const API_KEY = process.env.TMDB_API_KEY;
 const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN;
 
 const tmdb = axios.create({
   baseURL: BASE_URL,
   headers: {
     accept: "application/json",
-    Authorization: `Bearer ${ACCESS_TOKEN}`,
+    ...(API_KEY || !ACCESS_TOKEN
+      ? {}
+      : { Authorization: `Bearer ${ACCESS_TOKEN}` }),
   },
+  params: API_KEY ? { api_key: API_KEY } : {},
 });
 
 export const searchMedia = async (query: string) => {

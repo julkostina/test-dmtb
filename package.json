@@ -4,6 +4,6 @@
   "scripts": {
     "ui": "pnpm --filter ui start",
     "bff": "pnpm --filter bff start",
-    "dev": "pnpm run --parallel ui bff"
+    "dev": "pnpm --parallel --filter ui --filter bff start"
   }
 }

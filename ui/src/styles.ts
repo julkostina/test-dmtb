@@ -91,7 +91,7 @@ export const PageBackground = styled("div")<{ backdrop?: string }>(({ theme, bac
   backgroundImage: backdrop 
     ? `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.25)), url(${backdrop})`
     : 'none',
-  backgroundColor: theme.palette.ocean.light,
+  backgroundColor: theme.palette.ocean.dark,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
