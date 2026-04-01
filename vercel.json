@@ -1,6 +1,18 @@
+
 {
   "installCommand": "pnpm install",
   "buildCommand": "pnpm --filter ui build",
   "outputDirectory": "ui/dist",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "img-src 'self' https://image.tmdb.org data: blob:;"
+        }
+      ]
+    }
+  ]
 }
