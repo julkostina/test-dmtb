@@ -10,5 +10,6 @@ export const typeDefs = `#graphql
 
   type Query {
     search(query: String!): [Media!]!
+    popular: [Media!]!
   }
 `;

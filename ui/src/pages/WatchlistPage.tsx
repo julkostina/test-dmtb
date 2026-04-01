@@ -2,9 +2,9 @@ import React from 'react'
 
 function WatchlistPage() {
   return (
-    <div>
-      
-    </div>
+    <h1>
+      Watchlist Page
+    </h1>
   )
 }
 
