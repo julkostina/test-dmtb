@@ -35,7 +35,7 @@ function SearchInput({ value, onChange, loading }: Props) {
         <StyledInputBase
           value={local}
           onChange={(e) => setLocal(e.target.value)}
-          placeholder="Search movies & TV shows…"
+          placeholder="Search"
           inputProps={{ 'aria-label': 'search' }}
         />
         {local && (

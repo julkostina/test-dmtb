@@ -76,7 +76,7 @@ function SearchPage() {
       {error && <p>Something went wrong.</p>}
       {!loading && query && results.length === 0 && <p>Nothing found.</p>}
 
-      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 16, padding: 16, maxHeight:"600px", overflowY: "auto" }}>
+      {query && <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 16, padding: 16, maxHeight:"600px", overflowY: "auto" }}>
         {results.map((item) => (
           <MovieCard
             key={item.id}
@@ -85,7 +85,7 @@ function SearchPage() {
             isInWatchlist={isInWatchlist(item.id)}
           />
         ))}
-      </div>
+      </div>}
       </FlexColumnContainer>
     </PageBackground>
   );
