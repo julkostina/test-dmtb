@@ -1,14 +1,13 @@
-import { Link } from 'react-router-dom';
-import { HeaderContainer, Logo } from '../styles';
+import { HeaderContainer, Logo, LinkContainer, FlexContainer } from "../styles";
 
 export default function Header() {
   return (
-    <HeaderContainer color='custom'>
+    <HeaderContainer color="custom">
       <Logo to="/">Search movies service</Logo>
-      <div >
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </div>
+      <FlexContainer>
+        <LinkContainer to="/">Home</LinkContainer>
+        <LinkContainer to="/watchlist">Watchlist</LinkContainer>
+      </FlexContainer>
     </HeaderContainer>
-  )
+  );
 }

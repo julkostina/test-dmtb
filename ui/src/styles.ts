@@ -48,8 +48,34 @@ export const HeaderContainer = styled("header")(({ theme }) => ({
   color: theme.palette.common.white,
 }));
 
-export const Logo = styled(Link)(({ theme }) => ({
+export const LinkContainer = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: "inherit",
+  display: "flex",  
+  alignItems: "center",
+  gap: theme.spacing(2),
+  fontSize: "1rem",
+  
+  transition: "color 0.3s ease, transform 0.3s ease", 
+  cursor: "pointer",
+
+  "&:hover": {
+    color: theme.palette.primary.main,   
+  },
+}));
+
+export const Logo = styled(LinkContainer)(() => ({
   fontSize: "1.5rem",
 }));
+
+export const FlexContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(2),
+}));
+
+export const PageBackground = styled("div")<{ background?: string }>(({ theme, background }) => ({
+  backgroundColor: background ? background : theme.palette.ocean.light,
+  minHeight: "100vh",
+}));
+

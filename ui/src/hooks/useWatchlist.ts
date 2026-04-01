@@ -20,7 +20,7 @@ export const useWatchlist = () => {
     setWatchlist((prev) => prev.filter((item) => item.id !== media.id));
     localStorage.setItem('watchlist', JSON.stringify(watchlist.filter((item) => item.id !== media.id)));
   };
-
+  
   return {
     watchlist,
     addToWatchlist,
