@@ -1,13 +1,14 @@
 export const typeDefs = `#graphql
-  type Movie {
+  type Media {
     id: ID!
     title: String!
-    releaseDate: String
-    overview: String
-    posterPath: String
-  }
+    poster: String
+    releaseYear: String
+    rating: Float
+    type: String
+    }
 
   type Query {
-    searchMovies(query: String!): [Movie!]!
+    search(query: String!): [Media!]!
   }
 `;

@@ -1,7 +1,7 @@
-import { searchResolvers} from './searchResolvers';
+import { searchMedia} from '../services/tmdbService';
 
 export const resolvers = {
   Query: {
-    ...searchResolvers,
+    search: (_:unknown, { query }: { query: string }) => searchMedia(query),
   },
 };
