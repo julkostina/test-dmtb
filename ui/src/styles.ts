@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 export const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.white, 0.5),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.7),
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -43,11 +43,21 @@ export const HeaderContainer = styled("header")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  padding: theme.spacing(4),
+  padding: theme.spacing(5),
   backgroundColor: theme.palette.ocean.main,
   color: theme.palette.common.white,
 }));
 
+export const H1Container = styled("h1")(({ theme }) => ({
+  fontSize: "2rem",
+  color: theme.palette.ocean.dark,
+  padding: theme.spacing(2),
+  backgroundColor: theme.palette.ocean.contrastText,
+}));
+export const PContainer = styled("p")(({ theme }) => ({
+  fontSize: "1rem",
+  color: theme.palette.common.white,
+}));
 export const LinkContainer = styled(Link)(({ theme }) => ({
   textDecoration: "none",
   color: "inherit",
@@ -74,8 +84,17 @@ export const FlexContainer = styled("div")(({ theme }) => ({
   gap: theme.spacing(2),
 }));
 
-export const PageBackground = styled("div")<{ background?: string }>(({ theme, background }) => ({
-  backgroundColor: background ? background : theme.palette.ocean.light,
-  minHeight: "100vh",
+export const FlexColumnContainer = styled(FlexContainer)(() => ({
+  flexDirection: "column",
+  // alignItems: "flex-start",
 }));
-
+export const PageBackground = styled("div")<{ backdrop?: string }>(({ theme, backdrop }) => ({
+  backgroundImage: backdrop 
+    ? `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.25)), url(${backdrop})`
+    : 'none',
+  backgroundColor: theme.palette.ocean.light,
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  minHeight: '100vh',
+}));

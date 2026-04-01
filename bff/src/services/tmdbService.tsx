@@ -1,49 +1,54 @@
-import axios from 'axios';
-import * as dotenv from 'dotenv';
-dotenv.config({path: '../.env'});
-import { Media } from '../types/tmdbServiceTypes';
-const BASE_URL = process.env.TMDB_BASE_URL;
+import axios from "axios";
+import * as dotenv from "dotenv";
+import { Media } from "../types/tmdbServiceTypes";
+
+dotenv.config({ path: "../.env" });
+
+const BASE_URL =
+  process.env.TMDB_BASE_URL ?? "https://api.themoviedb.org/3";
 const ACCESS_TOKEN = process.env.TMDB_ACCESS_TOKEN;
 
-export const searchMedia = async (query: string) => {
-  const { data } = await axios.get(`${BASE_URL}/search/multi`, {
-    params: { query },
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${ACCESS_TOKEN}`,
-    },
-  });
+const tmdb = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${ACCESS_TOKEN}`,
+  },
+});
 
+export const searchMedia = async (query: string) => {
+const { data } = await tmdb.get("/search/multi", {
+    params: { query },
+  });
   return data.results
-    .filter((item: Media) => item.media_type === 'movie' || item.media_type === 'tv')
+    .filter(
+      (item: Media) => item.media_type === "movie" || item.media_type === "tv",
+    )
     .map((item: Media) => ({
       id: item.id,
       title: item.title || item.name,
-      poster: (item.poster_path
+      poster: item.poster_path
         ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
-        : null),
-      releaseYear: (item.release_date || item.first_air_date)?.split('-')[0],
+        : null,
+      releaseYear: (item.release_date || item.first_air_date)?.split("-")[0],
       rating: item.vote_average,
-      type: item.media_type,           
+      type: item.media_type,
     }));
 };
 
 export const getPopularMovies = async () => {
-  const { data } = await axios.get(`${BASE_URL}/movie/popular`, {
-    headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${ACCESS_TOKEN}`,
-    },
-  });
-
+  const { data } = await tmdb.get("/movie/popular");
   return data.results.map((item: Media) => ({
     id: item.id,
-    title: item.title || 'Unknown Title',
+    title: item.title || "Unknown Title",
     poster: item.poster_path
       ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
       : null,
-    releaseYear: item.release_date ? item.release_date.split('-')[0] : null,
+    backdrop: item.backdrop_path
+      ? `https://image.tmdb.org/t/p/original${item.backdrop_path}`
+      : null,
+    releaseYear: item.release_date ? item.release_date.split("-")[0] : null,
     rating: item.vote_average || null,
-    type: 'movie',
+    type: "movie",
   }));
 };

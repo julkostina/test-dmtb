@@ -4,6 +4,7 @@ export const typeDefs = `#graphql
     title: String!
     poster: String
     releaseYear: String
+    backdrop: String
     rating: Float
     type: String
     }
