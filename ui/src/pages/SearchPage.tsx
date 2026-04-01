@@ -5,13 +5,11 @@ import InputBase from '@mui/material/InputBase';
 import Header from "../components/Header";
 
 
-
 function SearchPage() {
 
   return (
     <div>
       <Header />
-
     </div>
   );
 }
